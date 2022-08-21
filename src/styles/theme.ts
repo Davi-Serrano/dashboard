@@ -4,7 +4,7 @@ export const  theme = extendTheme({
     fonts: {
       heading: "Roboto",
       body: "Roboto",
-    },
+    },  
     styles: {
         global : {
             a:{
@@ -12,11 +12,10 @@ export const  theme = extendTheme({
                 textDecoration: "none",
             },
             body:{
-                bg: '#222222',
                 margin: 0,
-                color: 'gray.50',
-                
+                color: 'gray.50',    
             },
+            
         }
     }
 })

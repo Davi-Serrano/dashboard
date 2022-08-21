@@ -15,7 +15,6 @@ export const  theme = extendTheme({
                 margin: 0,
                 color: 'gray.50',    
             },
-            
         }
     }
 })

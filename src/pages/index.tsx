@@ -1,4 +1,4 @@
-import {  Flex, Text, Input, Image, Button, Box, border, Stack, Checkbox, Radio, RadioGroup } from '@chakra-ui/react'
+import {  Box, Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
 
 
 export default function Home() {
@@ -53,13 +53,13 @@ export default function Home() {
             mt="5em"
           >
             <Flex flexDir="column">
-              <Input 
+              <Input
                 variant='unstyled'
                 border="none"
                 borderBottom="1px solid white"
                 borderRadius="none"
                 placeholder="Nome"
-
+                pl=".5em"
                 _placeholder={{
                   color: "white"
                 }}
@@ -74,7 +74,7 @@ export default function Home() {
                 borderBottom="1px solid white"
                 borderRadius="none"
                 placeholder="Email"
-
+                pl=".5em"
                 _placeholder={{
                   color: "white"
                 }}
@@ -83,20 +83,28 @@ export default function Home() {
                 
                 m=" .7em 0"/>
 
-              <Input 
-                variant='unstyled'
-                border="none"
-                borderBottom="1px solid white"
-                borderRadius="none"
-                placeholder="Telefone"
-
-                _placeholder={{
-                  color: "white"
-                }}
-
-                color="white"
-                
-                m=" .7em 0"/>
+                <NumberInput
+                variant="unstyled" 
+                >
+                  <NumberInputField 
+                  border="none"  
+                  borderBottom="1px solid white"
+                  borderRadius="none"
+                  placeholder="Telefone"
+                  pl=".5em"
+                  width="85%"
+                  _placeholder={{
+                    color: "white"
+                  }}
+  
+                  color="white"
+                  
+                  m=" .7em 0"
+                />
+                  <NumberInputStepper>
+                  
+                  </NumberInputStepper>
+                </NumberInput>
 
               <Input 
                 variant='unstyled'
@@ -104,7 +112,7 @@ export default function Home() {
                 borderBottom="1px solid white"
                 borderRadius="none"
                 placeholder="Assunto"
-
+                pl=".5em"
                 _placeholder={{
                   color: "white"
                 }}
@@ -135,7 +143,7 @@ export default function Home() {
               transition=".5s"
               _hover={{
                 cursor: "pointer",
-                opacity: ".8",
+                bg: "#222",
 
               }}
             >

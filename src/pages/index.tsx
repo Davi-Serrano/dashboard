@@ -1,7 +1,15 @@
 import {  Box, Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
+import { useState } from 'react'
+import { BtnSendDataClient } from '../components/btn'
 
 
 export default function Home() {
+
+  const [ email, setEmail ] = useState<string>("")
+  const [ name, setName ] = useState<string>("")
+  const [ tel, setTell ] = useState<number>()
+  const [ topic, setTopic ] = useState<string>("")
+
    return (
     <Flex
       justify="space-round"
@@ -29,8 +37,6 @@ export default function Home() {
           <Flex 
             flexDir="column"
             align="center"
-      
-            
           >
             <Image 
                 src="./Princiapal-_1_.webp" 
@@ -131,26 +137,8 @@ export default function Home() {
 
               </Stack>
             </RadioGroup>
-            <Box
-              bg="#000"
-              color="#fff"
-              fontSize="20px"
-              p=".3em 2em"
-              borderRadius="16px"
-
-              mx="auto"
-              mt="1em"
-              transition=".5s"
-              _hover={{
-                cursor: "pointer",
-                bg: "#222",
-
-              }}
-            >
-
-              Enivar
-            </Box>
-
+            
+            
             <Text 
               mt="3em"
             >

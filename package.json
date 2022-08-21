@@ -15,6 +15,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "axios": "^0.26.1",
+    "date-fns": "^2.29.2",
     "faunadb": "^4.5.2",
     "framer-motion": "^6.2.8",
     "next": "12.1.0",

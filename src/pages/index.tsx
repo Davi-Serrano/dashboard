@@ -1,14 +1,17 @@
-import {  Box, Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
+import {  Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
 import { useState } from 'react'
 import { BtnSendDataClient } from '../components/btn'
 
 
 export default function Home() {
 
-  const [ email, setEmail ] = useState<string>("")
   const [ name, setName ] = useState<string>("")
-  const [ tel, setTell ] = useState<number>()
+  const [ email, setEmail ] = useState<string>("")
+  const [ tel, setTel ] = useState<string>("")
   const [ topic, setTopic ] = useState<string>("")
+  const [ radioCheck, setRadioCheck ] = useState<string>("")
+
+  console.log(radioCheck)
 
    return (
     <Flex
@@ -66,13 +69,13 @@ export default function Home() {
                 borderRadius="none"
                 placeholder="Nome"
                 pl=".5em"
+                color="white"
+                m=" .7em 0"
                 _placeholder={{
                   color: "white"
                 }}
-
-                color="white"
-                
-                m=" .7em 0"/>
+                onChange={(e)=> setName(e.target.value) } 
+                />
              
               <Input 
                 variant='unstyled'
@@ -81,14 +84,13 @@ export default function Home() {
                 borderRadius="none"
                 placeholder="Email"
                 pl=".5em"
+                color="white"
+                m=" .7em 0"
                 _placeholder={{
                   color: "white"
                 }}
-
-                color="white"
-                
-                m=" .7em 0"/>
-
+                onChange={(e)=> setEmail(e.target.value) }
+                />
                 <NumberInput
                 variant="unstyled" 
                 >
@@ -99,13 +101,12 @@ export default function Home() {
                   placeholder="Telefone"
                   pl=".5em"
                   width="85%"
+                  color="white"
+                  m=" .7em 0"
                   _placeholder={{
                     color: "white"
                   }}
-  
-                  color="white"
-                  
-                  m=" .7em 0"
+                  onChange={(e)=> setTel(e.target.value)}
                 />
                   <NumberInputStepper>
                   
@@ -119,26 +120,32 @@ export default function Home() {
                 borderRadius="none"
                 placeholder="Assunto"
                 pl=".5em"
+                color="white"
+                m=" .7em 0"
                 _placeholder={{
                   color: "white"
                 }}
+                onChange={(e)=> setTopic(e.target.value) }
+              />
 
-                color="white"
-                
-                m=" .7em 0"/>
             </Flex>
            
-           
-            <RadioGroup mt="1em" defaultValue='2' >
+            <RadioGroup mt="1em" defaultValue='Nunca vendi na Shopee'>
               <Stack  spacing={3} direction={"column"}>          
                 
-                <Radio colorScheme='green' value='1'>Já vendo na Shopee </Radio>
-                <Radio colorScheme='green' value='2'> Nunca vendi na Shopee </Radio>
+                <Radio colorScheme='#8B0000' value='Já vendo na Shopee' onChange={(e)=>setRadioCheck(e.target.value )} >Já vendo na Shopee </Radio>
+                <Radio colorScheme='#8B0000' value='Nunca vendi na Shopee' onChange={(e)=>setRadioCheck(e.target.value )} > Nunca vendi na Shopee </Radio>
 
               </Stack>
             </RadioGroup>
             
-            
+            <BtnSendDataClient 
+              name={name}
+              email={email}
+              tel={tel}
+              topic={topic}
+              option={radioCheck}
+            />
             <Text 
               mt="3em"
             >

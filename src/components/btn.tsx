@@ -4,17 +4,19 @@ import axios from "axios"
 interface ClientProps{
     name: string,
     email: string,
-    tel: number,
-    topic: string
+    tel: string,
+    topic: string,
+    option: string
 }
 
-export function BtnSendDataClient({name, email, tel, topic}: ClientProps){
+export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps){
     
     const client = {
         name,
         email,
         tel,
-        topic
+        topic,
+        option
     }
 
     const handleClick = async (client: ClientProps)=>{

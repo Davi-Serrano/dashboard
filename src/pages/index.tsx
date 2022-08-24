@@ -98,7 +98,7 @@ export default function Home() {
                   border="none"  
                   borderBottom="1px solid white"
                   borderRadius="none"
-                  placeholder="Telefone"
+                  placeholder="Whatsapp"
                   pl=".5em"
                   width="85%"
                   color="white"

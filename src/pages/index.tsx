@@ -9,7 +9,7 @@ export default function Home() {
   const [ email, setEmail ] = useState<string>("")
   const [ tel, setTel ] = useState<string>("")
   const [ topic, setTopic ] = useState<string>("")
-  const [ radioCheck, setRadioCheck ] = useState<string>("")
+  const [ radioCheck, setRadioCheck ] = useState<string>("Nunca vendi na Shopee")
 
   console.log(radioCheck)
 

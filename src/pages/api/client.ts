@@ -3,14 +3,18 @@ import { query as q} from "faunadb"
 import { fauna } from "../../services/fauna";
 import { format } from "date-fns"
 
+interface CProps{
+  email: string
+}
 
 export default async(req: NextApiRequest, res: NextApiResponse)=>{
     // Verify if method is equal POST.
     if (req.method === "POST"){
 
-        const client = req.body;
+        const clients: CProps = req.body;
+        const { email}  = clients
 
-        Object.assign(client,{
+        Object.assign(clients,{
             createdAt: format(new Date(), "dd/MM/yyyy 'at' h:mm a")
         })
         
@@ -20,20 +24,20 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
                   q.Not(
                     q.Exists(
                       q.Match(
-                        q.Index("clientes"),
-                        q.Casefold(client.email) 
+                        q.Index("user_by_clients"),
+                        q.Casefold(clients.email) 
                       )
                     )
                   ),
                   q.Create(
                     q.Collection("users"),
-                      { data: { client }}
+                      { data:  { email } }
                   ),
                   //If exits get the email
                   q.Get(
                     q.Match(
-                      q.Index("clientes"),
-                      q.Casefold(client.email)
+                      q.Index("user_by_clients"),
+                      q.Casefold(clients.email)
                     )
                   )
                 )

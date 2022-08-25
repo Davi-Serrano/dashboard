@@ -12,7 +12,6 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
     if (req.method === "POST"){
 
         const clients: CProps = req.body;
-        const { email}  = clients
 
         Object.assign(clients,{
             createdAt: format(new Date(), "dd/MM/yyyy 'at' h:mm a")
@@ -31,7 +30,7 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
                   ),
                   q.Create(
                     q.Collection("users"),
-                      { data:  { email } }
+                      { data:  clients }
                   ),
                   //If exits get the email
                   q.Get(

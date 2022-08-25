@@ -9,7 +9,7 @@ export default function User(users: any){
   const [a, setA] = useState()
 
   useEffect(()=>{
-    setA(users)
+    setA(users.users)
   }, [])
 
   console.log(a)
@@ -22,6 +22,8 @@ export default function User(users: any){
 
 export const getServerSideProps:GetServerSideProps = async ()=>{
 
+  const myUser = []
+
   const users:any = await fauna.query(
     q.Map(
       q.Paginate(q.Documents(q.Collection('users'))),
@@ -29,14 +31,18 @@ export const getServerSideProps:GetServerSideProps = async ()=>{
     )
     )
     
-      console.log(users.data[0].data.email)
-      console.log(users.data[1].data.email)
+
+    for(let i = 0; i < users.data.length; i++){
+      myUser.push(users.data[i].data)
+    }
+      
+      
 
 
 
   return {
     props:{
-      users: users.data[1].data.email
+      users: myUser
     }
   }
 }

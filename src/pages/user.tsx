@@ -5,17 +5,48 @@ import { query as q} from "faunadb"
 import { useEffect, useState } from "react";
 import { parseJSON } from "date-fns";
 
+
+
 export default function User(users: any){
-  const [a, setA] = useState()
+  const [a, setA] = useState([
+{    name: ""},
+{    email: ""},
+{    tel: ""},
+{    option: ""},
+{    topic: ""},
+{    createdAt: ""},
+
+  ])
 
   useEffect(()=>{
     setA(users.users)
   }, [])
 
-  console.log(a)
     return(
 
-      <Flex>
+      <Flex 
+        flexDir="column"
+        justify="space-between"
+        align="center"
+        bg="black"
+        minH="100vh"
+        >
+            {
+              a.map( (user) =>(
+                <Flex justify="space-around" w="100%" key={user.email} color="white">
+                    <Text borderBottom="1px solid white">{user.name}</Text>
+                    <Text borderBottom="1px solid white">{user.email}</Text>
+                    <Text borderBottom="1px solid white">{user.tel}</Text>
+                    <Text borderBottom="1px solid white">{user.option}</Text>                    
+                    <Text borderBottom="1px solid white">{user.topic}</Text>
+                    <Text borderBottom="1px solid white">{user.createdAt}</Text>
+
+                </Flex>
+              ))
+            }
+
+
+
       </Flex>
     )
 }

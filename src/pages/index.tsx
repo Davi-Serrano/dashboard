@@ -11,8 +11,6 @@ export default function Home() {
   const [ topic, setTopic ] = useState<string>("")
   const [ radioCheck, setRadioCheck ] = useState<string>("Nunca vendi na Shopee")
 
-  console.log(radioCheck)
-
    return (
     <Flex
       justify="space-round"

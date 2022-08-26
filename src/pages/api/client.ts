@@ -19,27 +19,10 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
         
         try{
             await fauna.query(
-                q.If(
-                  q.Not(
-                    q.Exists(
-                      q.Match(
-                        q.Index("user_by_clients"),
-                        q.Casefold(clients.email) 
-                      )
-                    )
-                  ),
                   q.Create(
                     q.Collection("users"),
                       { data:  clients }
-                  ),
-                  //If exits get the email
-                  q.Get(
-                    q.Match(
-                      q.Index("user_by_clients"),
-                      q.Casefold(clients.email)
-                    )
-                  )
-                )
+                  )                 
             ); 
           return true
         }catch{

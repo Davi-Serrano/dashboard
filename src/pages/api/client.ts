@@ -24,6 +24,8 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
                       { data:  clients }
                   )                 
             ); 
+
+            res.send(200)
           return true
         }catch{
           return false

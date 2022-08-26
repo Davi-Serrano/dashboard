@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react"
 import axios from "axios"
+import { useRouter } from "next/router";
 
 interface ClientProps{
     name: string,
@@ -10,7 +11,7 @@ interface ClientProps{
 }
 
 export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps){
-    
+    const router = useRouter()
     const client = {
         name,
         email,
@@ -22,10 +23,11 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
     const handleClick = async (client: ClientProps)=>{
         try{
             await axios.post("/api/client", client)
-
+            router.push('/cadastrado')
         } catch{
-            
+            alert("Não foi possivel realizar seu cadastro tente novamente mais tarde")
         }
+
     }   
 
     return(

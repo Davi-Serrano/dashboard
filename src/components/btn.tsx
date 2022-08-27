@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react"
+import { Box, toast } from "@chakra-ui/react"
 import axios from "axios"
 import { useRouter } from "next/router";
 
@@ -21,12 +21,19 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
     }
 
     const handleClick = async (client: ClientProps)=>{
-        try{
-            await axios.post("/api/client", client)
-            router.push('/cadastrado')
-        } catch{
-            alert("Não foi possivel realizar seu cadastro tente novamente mais tarde")
-        }
+
+            if( tel.length  < 10 || name.length < 5 || email.length < 6 ){
+                
+            }
+
+
+
+        // try{
+        //     await axios.post("/api/client", client)
+        //     router.push('/cadastrado')
+        // } catch{
+        //     alert("Não foi possivel realizar seu cadastro tente novamente mais tarde")
+        // }
 
     }   
 

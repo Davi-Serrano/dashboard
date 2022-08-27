@@ -1,11 +1,8 @@
 import { GetServerSideProps } from "next";
-import {  Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
+import {  Flex, Text, Table, Tbody, Td, Tr } from '@chakra-ui/react'
 import { fauna } from "../services/fauna";
 import { query as q} from "faunadb"
 import { useEffect, useState } from "react";
-import { parseJSON } from "date-fns";
-
-
 
 export default function User(users: any){
   const [a, setA] = useState([
@@ -17,7 +14,6 @@ export default function User(users: any){
 {    createdAt: ""},
 
   ])
-
 
   useEffect(()=>{
     setA(users.users)
@@ -33,49 +29,51 @@ export default function User(users: any){
         >
           <Text as="h2">Clientes Cadastrados</Text>
 
-          <Flex flexDir="column" justify="center"  p="1em 0" border="1px solid black" borderRadius={16} >
+          <Table variant="striped" w="80%">
+            <Tbody>
             {
               a.map( (user, index) => 
                
-                    <Flex  key={user.email} fontSize="12px" p="0 .5em" borderBottom="1px solid black" >
+                    <Tr  key={user.email} fontSize="13px" p="0 .5em" borderBottom="1px solid black" >
 
-                        <Text fontWeight="bold">{index + 1}</Text>
+                        <Td fontWeight="bold">
+                          {index + 1}
+                        </Td>
                     
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                           {user.name}
-                        </Text>
+                        </Td>
 
 
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                           {user.email}
-                        </Text>
+                        </Td>
 
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                           {user.tel}
-                        </Text>
+                        </Td>
 
 
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                           {user.topic}
-                        </Text>
+                        </Td>
 
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                           {user.option}
-                        </Text>
+                        </Td>
 
 
-                        <Text width="150px" textAlign="center">
+                        <Td width="150px" textAlign="center">
                             {user.createdAt}
-                        </Text>
-                    </Flex>
+                        </Td>
+                    </Tr>
                   )
                
             }
-          
-              </Flex>
+            </Tbody>
+          </Table>
 
-
-
+            
       </Flex>
     )
 }

@@ -1,4 +1,4 @@
-import {  Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
+import { Flex, Text, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper ,Input, Image,  Stack,  Radio, RadioGroup } from '@chakra-ui/react'
 import { useState } from 'react'
 import { BtnSendDataClient } from '../components/btn'
 
@@ -10,6 +10,8 @@ export default function Home() {
   const [ tel, setTel ] = useState<string>("")
   const [ topic, setTopic ] = useState<string>("")
   const [ radioCheck, setRadioCheck ] = useState<string>("Nunca vendi na Shopee")
+
+
 
    return (
     <Flex

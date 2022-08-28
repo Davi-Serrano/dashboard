@@ -4,16 +4,26 @@ import { fauna } from "../../services/fauna";
 import { format } from "date-fns"
 
 interface CProps{
-  email: string
+  name: string;
+  tel: string;
+  email: string;
+  option: string;
+  topic: string;
+  createdAt: Date;
 }
 
 export default async(req: NextApiRequest, res: NextApiResponse)=>{
     // Verify if method is equal POST.
     if (req.method === "POST"){
 
-        const clients: CProps = req.body;
+        const client : CProps = req.body;
+        const { name, tel, email  } = client
 
-        Object.assign(clients,{
+        if( name.length  < 5 || email.length  < 4 || tel.length  < 10  ){
+          return res.send(300)
+        }
+
+        Object.assign(client,{
             createdAt: format(new Date(), "dd/MM/yyyy 'at' h:mm a")
         })
         
@@ -21,7 +31,7 @@ export default async(req: NextApiRequest, res: NextApiResponse)=>{
             await fauna.query(
                   q.Create(
                     q.Collection("users"),
-                      { data:  clients }
+                      { data:  client }
                   )                 
             ); 
 

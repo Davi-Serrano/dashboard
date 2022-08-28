@@ -31,28 +31,27 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
                 status: 'error',
                 isClosable: true,
             })
+        }else{
+            try{
+                await axios.post("/api/client", client)
+                toast({
+                    title: 'Cadastrado com sucesso', 
+                    position: 'top',          
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true,
+                })
+                router.push('/cadastrado')
+            } catch{
+                toast({
+                    title: 'Erro ao cadastrar!.', 
+                    position: "top",          
+                    description: `Erro ao se conectar com o banco de dados por favor tente novamente mais tarde`,
+                    status: 'error',
+                    isClosable: true,
+                })
+            }
         }
-
-        try{
-            await axios.post("/api/client", client)
-            toast({
-                title: 'Cadastrado com sucesso', 
-                position: 'top',          
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-            })
-            router.push('/cadastrado')
-        } catch{
-            toast({
-                title: 'Erro ao cadastrar!.', 
-                position: "top",          
-                description: `Erro ao se conectar com o banco de dados por favor tente novamente mais tarde`,
-                status: 'error',
-                isClosable: true,
-            })
-        }
-
     }   
 
     return(

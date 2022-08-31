@@ -1,19 +1,39 @@
-import { Flex, Text, } from "@chakra-ui/react"
+import { Flex, Text, Icon } from "@chakra-ui/react"
+import { useState } from "react"
+import { GiHamburgerMenu } from "react-icons/gi"
 
 export function SideBar(){
 
+    const [ isClose, setIsClose ] = useState("close")
+
+
     return(
-        <Flex
+        <Flex 
             flexDir="column"
-            pl="1em"
-            w="20%"
-            h="100vh"
+            align="start"
             bg="#060606"
         >
-            <Text fontSize="28px" mb=".3em" pl="1em" w="80%" borderBottom="1px solid white">Cursos</Text>
-            <Text fontSize="22" m="1px 0"  pl="1em">Shopee</Text>
-            <Text fontSize="14" m="1px"   pl="2em"> - Clientes Registrados</Text>
+            <Icon as={GiHamburgerMenu}
+                onClick={()=> isClose === "close" ? setIsClose("open") : setIsClose("close")}
+                color="white"
+                p="1em"
+                boxSize={8}
+            />
+            <Flex
+            flexDir="column"
+            w="100%"
+            display={ isClose === "close" ? "none" :"block"}
+            >
+                <Text fontSize="28px" mb=".3em" pl=".3em" w="80%" borderBottom="1px solid white">Cursos</Text>
+                <Text fontSize="22" m="1px 0"  pl="1em">Shopee</Text>
+                <Text fontSize="14" m="1px"   px="2em"
+                _hover={{
+                    cursor: "pointer",
+                    opacity: ".8"
+                }}
+                > - Clientes Registrados</Text>
 
+            </Flex>
         </Flex>
     )
 }

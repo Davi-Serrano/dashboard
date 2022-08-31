@@ -57,11 +57,11 @@ export default function User(users: any){
         <SideBar />
         <Flex 
           flexDir="column"
+          w="75%"
           justify="flex-start"
           align="center"
           color="black"
-          
-          >
+        >
            <Text my="1em" as="h2">Usuários registrados hoje: 12</Text>
 
             <Flex w="100%" justify="space-around">
@@ -70,7 +70,7 @@ export default function User(users: any){
                   <Chart
                     chartType="Bar"
                     width="100%"
-                    height="400px"
+                    height="250px"
                     data={data}
                     options={options}
                   />
@@ -82,7 +82,7 @@ export default function User(users: any){
                   <Chart
                     chartType="Bar"
                     width="100%"
-                    height="400px"
+                    height="250px"
                     data={data}
                     options={options}
                   />

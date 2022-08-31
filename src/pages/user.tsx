@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
+
 import {  Flex, Text, Table, Tbody, Td, Tr, useMediaQuery, Box } from '@chakra-ui/react'
+
 import { fauna } from "../services/fauna";
 import { query as q} from "faunadb"
-import { useEffect, useState } from "react";
+
+import { Chart } from "react-google-charts"
 
 import {Header} from "../components/Header"
 import { SideBar } from "../components/Sidebar";
@@ -21,6 +25,22 @@ interface CProps{
 interface UserProps{
   users: CProps[]
 }
+
+
+export const data = [
+  ["", "", ""],
+  ["2014",  400, 200],
+  ["2015",  460, 250],
+  ["2016",  1120, 300],
+  ["2017",  540, 350],
+];
+
+export const options = {
+  chart: {
+  },
+};
+
+
 
 export default function User(users: UserProps){
   const [ isLargerThan900 ] = useMediaQuery('(min-width: 900px)');
@@ -51,15 +71,46 @@ export default function User(users: UserProps){
         <SideBar />
         <Flex 
           flexDir="column"
-          justify="space-between"
+          justify="flex-start"
           align="center"
           color="black"
+          
           >
-            <Text as="h2">Clientes Cadastrados</Text>
+           <Text my="1em" as="h2">Usuários registrados hoje: 12</Text>
+
+            <Flex w="100%" justify="space-around">
+
+                <Flex flexDir="column"  w="45%">
+                  <Chart
+                    chartType="Bar"
+                    width="100%"
+                    height="400px"
+                    data={data}
+                    options={options}
+                  />
+
+                  <Text textAlign="center" fontWeight="bold"> Cadastros na Semana</Text>
+                </Flex>
+
+                <Flex flexDir="column" w="45%">
+                  <Chart
+                    chartType="Bar"
+                    width="100%"
+                    height="400px"
+                    data={data}
+                    options={options}
+                  />
+
+                  <Text  textAlign="center" fontWeight="bold"> Cadastros no Total</Text>
+                </Flex>
+
+        </Flex>
 
           { isLargerThan900 ? 
+          <Box mt="0">
+            <Text as="h2">Clientes Cadastrados</Text>
 
-            <Table variant="striped" w="80%">
+            <Table variant="striped" w="100%">
               <Tbody p="0">
               {
                 a.map( (user: CProps, index: number) => 
@@ -79,6 +130,10 @@ export default function User(users: UserProps){
               }
               </Tbody>
             </Table>  
+            
+                <Text color="#000">Ver lista Completa </Text>
+
+          </Box>
             :
             <Flex w="80%" flexDir="column" align="center" justify="center" >
               {
@@ -142,7 +197,7 @@ export const getServerSideProps:GetServerSideProps = async ()=>{
     )
     
 
-    for(let i = 0; i < users.data.length; i++){
+    for(let i = 0; i < 3; i++){
       myUser.push(users.data[i].data)
     }
 

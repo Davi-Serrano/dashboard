@@ -38,7 +38,7 @@ export function TableRow({index, name, email, tel, option, topic, createdAt}: Cl
           {topic}
         </Td>
 
-        <Td width="150px" textAlign="center">
+        <Td width="350px" textAlign="center">
           {option}
         </Td>
 

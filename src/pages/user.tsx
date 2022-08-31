@@ -123,7 +123,9 @@ export default function User(users: any){
           </Box>
             :
             <Flex w="80%" flexDir="column" align="center" justify="center" >
-              {
+              
+              Versão para Mobile indisponivel
+              {/* {
                 a.map((user: any, index: number) => 
                 
                 <Flex bg="#888"  key={index} flexWrap="wrap" justify="center" maxW="320px" fontSize="16px" fontWeight="bold" p="1em" m="1em 0" border="1px solid black" >
@@ -158,7 +160,7 @@ export default function User(users: any){
                     </Flex>
                 </Flex>
                 )
-              } 
+              }  */}
             </Flex>
           }
               

@@ -109,6 +109,7 @@ export default function User(users: any){
                   topic={user.topic}
                   createdAt={user.createdAt}
                   index={index}
+                  key={user.name}
                 
                 /> 
                 )
@@ -123,7 +124,7 @@ export default function User(users: any){
             :
             <Flex w="80%" flexDir="column" align="center" justify="center" >
               {
-                a.map( (user: any, index: number) => 
+                a.map((user: any, index: number) => 
                 
                 <Flex bg="#888"  key={index} flexWrap="wrap" justify="center" maxW="320px" fontSize="16px" fontWeight="bold" p="1em" m="1em 0" border="1px solid black" >
 

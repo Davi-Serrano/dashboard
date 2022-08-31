@@ -14,7 +14,7 @@ interface ClientProps{
 
 export function TableRow({index, name, email, tel, option, topic, createdAt}: ClientProps){
     return(
-        <Tr key={index} fontSize="12px" p="0 .5em" borderBottom="1px solid black" >
+        <Tr key={name} fontSize="12px" p="0 .5em" borderBottom="1px solid black" >
 
         <Td fontWeight="bold">
           {index + 1}

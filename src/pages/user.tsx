@@ -13,7 +13,7 @@ import { SideBar } from "../components/Sidebar";
 import { TableRow } from "../components/TableRow";
 
 
-export const data = [
+ const data = [
   ["", "", ""],
   ["2014",  400, 200],
   ["2015",  460, 250],
@@ -21,7 +21,7 @@ export const data = [
   ["2017",  540, 350],
 ];
 
-export const options = {
+ const options = {
   chart: {
   },
 };
@@ -31,7 +31,7 @@ export const options = {
 export default function User(users: any){
   const [ isLargerThan900 ] = useMediaQuery('(min-width: 900px)');
   
-  const [a, setA] = useState<any>([
+  const [a, setA] = useState([
 {    name: ""},
 {    email: ""},
 {    tel: ""},
@@ -125,7 +125,7 @@ export default function User(users: any){
               {
                 a.map( (user: any, index: number) => 
                 
-                <Flex bg="#888"  key={user.email} flexWrap="wrap" justify="center" maxW="320px" fontSize="16px" fontWeight="bold" p="1em" m="1em 0" border="1px solid black" >
+                <Flex bg="#888"  key={index} flexWrap="wrap" justify="center" maxW="320px" fontSize="16px" fontWeight="bold" p="1em" m="1em 0" border="1px solid black" >
 
                     <Flex fontWeight="bold" mr="100%">
                       {index + 1}

@@ -45,7 +45,7 @@ export const options = {
 export default function User(users: UserProps){
   const [ isLargerThan900 ] = useMediaQuery('(min-width: 900px)');
   
-  const [a, setA] = useState<any>([
+  const [a, setA] = useState([
 {    name: ""},
 {    email: ""},
 {    tel: ""},

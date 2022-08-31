@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 
-import {  Flex, Text, Table, Tbody, Td, Tr, useMediaQuery, Box } from '@chakra-ui/react'
+import {  Flex, Text, Table, Tbody, useMediaQuery, Box } from '@chakra-ui/react'
 
 import { fauna } from "../services/fauna";
 import { query as q} from "faunadb"
@@ -52,21 +52,23 @@ export default function User(users: any){
       >
       <Header />
 
-    <Flex >
+    <Flex 
+      
+    >
 
         <SideBar />
         <Flex 
           flexDir="column"
-          w="75%"
+          w="85%"
           justify="flex-start"
           align="center"
           color="black"
         >
-           <Text my="1em" as="h2">Usuários registrados hoje: 12</Text>
+           <Text my="1em" as="h2" fontSize="md">Usuários registrados hoje: 12</Text>
 
-            <Flex w="100%" justify="space-around">
+            <Flex w="100%" my="1em" justify="space-around">
 
-                <Flex flexDir="column"  w="45%">
+                <Flex display={ isLargerThan900 ? "flex" : "none"} flexDir="column"  w="45%">
                   <Chart
                     chartType="Bar"
                     width="100%"
@@ -78,7 +80,7 @@ export default function User(users: any){
                   <Text textAlign="center" fontWeight="bold"> Cadastros na Semana</Text>
                 </Flex>
 
-                <Flex flexDir="column" w="45%">
+                <Flex flexDir="column"  w={isLargerThan900 ? "45%": "100%"} >
                   <Chart
                     chartType="Bar"
                     width="100%"
@@ -94,9 +96,9 @@ export default function User(users: any){
 
           { isLargerThan900 ? 
           <Box mt="0">
-            <Text as="h2">Clientes Cadastrados</Text>
+            <Text textAlign="center" as="h2">Usuários Cadastrados</Text>
 
-            <Table variant="striped" w="100%">
+            <Table mx="auto" variant="striped" w="90%">
               <Tbody p="0">
               {
                 a.map( (user: any, index: number) => 
@@ -118,49 +120,34 @@ export default function User(users: any){
               </Tbody>
             </Table>  
             
-                <Text color="#000">Ver lista Completa </Text>
+                <Text 
+                  textAlign="center" 
+                  fontWeight="bold" 
+                  color="#000"
+                  _hover={{
+                    cursor: "pointer",
+                    opacity: ".8"
+                  }}
+                >
+                  Ver lista Completa  	&gt;&gt;
+                </Text>
 
           </Box>
             :
             <Flex w="80%" flexDir="column" align="center" justify="center" >
               
-              Versão para Mobile indisponivel
-              {/* {
-                a.map((user: any, index: number) => 
-                
-                <Flex bg="#888"  key={index} flexWrap="wrap" justify="center" maxW="320px" fontSize="16px" fontWeight="bold" p="1em" m="1em 0" border="1px solid black" >
-
-                    <Flex fontWeight="bold" mr="100%">
-                      {index + 1}
-                    </Flex>
-                
-                    <Flex width="120px" h="80px" justify="center" align="center"  >
-                      {user.name}
-                    </Flex>
-
-
-                    <Flex width="120px" h="80px" justify="center" align="center" >
-                      {user.email}
-                    </Flex>
-
-                    <Flex width="120px" h="80px" justify="center" align="center" >
-                      {user.tel}
-                    </Flex>
-
-                    <Flex width="320px" h="80px" justify="center" align="center" >
-                      {user.option}
-                    </Flex>
-
-                    <Flex width="100px" minH="80px" justify="center" align="center" >
-                      Assunto: {user.topic}
-                    </Flex>
-
-                    <Flex width="320px" h="80px" justify="center" align="center" >
-                        Cadastrado: {user.createdAt}
-                    </Flex>
-                </Flex>
-                )
-              }  */}
+              <Text 
+                  textAlign="center" 
+                  fontWeight="bold" 
+                  color="#000"
+                  _hover={{
+                    cursor: "pointer",
+                    opacity: ".8"
+                  }}
+                >
+                  Ver lista Completa  	&gt;&gt;
+                </Text>
+             
             </Flex>
           }
               

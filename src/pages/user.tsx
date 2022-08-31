@@ -13,20 +13,6 @@ import { SideBar } from "../components/Sidebar";
 import { TableRow } from "../components/TableRow";
 
 
-interface CProps{
-  name: string;
-  tel: string;
-  email: string;
-  option: string;
-  topic: string;
-  createdAt: Date;
-}
-
-interface UserProps{
-  users: CProps[]
-}
-
-
 export const data = [
   ["", "", ""],
   ["2014",  400, 200],
@@ -42,10 +28,10 @@ export const options = {
 
 
 
-export default function User(users: UserProps){
+export default function User(users: any){
   const [ isLargerThan900 ] = useMediaQuery('(min-width: 900px)');
   
-  const [a, setA] = useState([
+  const [a, setA] = useState<any>([
 {    name: ""},
 {    email: ""},
 {    tel: ""},
@@ -113,7 +99,7 @@ export default function User(users: UserProps){
             <Table variant="striped" w="100%">
               <Tbody p="0">
               {
-                a.map( (user: CProps, index: number) => 
+                a.map( (user: any, index: number) => 
                 
                 <TableRow 
                   name={user.name} 
@@ -187,7 +173,7 @@ export default function User(users: UserProps){
 
 export const getServerSideProps:GetServerSideProps = async ()=>{
 
-  const myUser: UserProps[] = []
+  const myUser = []
 
   const users: any = await fauna.query(
     q.Map(

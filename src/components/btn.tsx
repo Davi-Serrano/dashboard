@@ -1,6 +1,7 @@
 import { Box, useToast } from "@chakra-ui/react"
 import axios from "axios"
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 interface ClientProps{
     name: string,
@@ -11,6 +12,7 @@ interface ClientProps{
 }
 
 export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps){
+    const [ sending, setSending ] = useState("enviado")
     const router = useRouter()
     const toast = useToast()
     const client = {
@@ -33,6 +35,7 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
             })
         }else{
             try{
+                setSending("aguarde")
                 await axios.post("/api/client", client)
                 toast({
                     title: 'Cadastrado com sucesso', 
@@ -54,6 +57,8 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
         }
     }   
 
+
+    if(sending  ===  "enviado"){
     return(
         <Box
               bg="#000"
@@ -61,7 +66,6 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
               fontSize="20px"
               p=".3em 2em"
               borderRadius="16px"
-
               mx="auto"
               mt="1em"
               transition=".5s"
@@ -76,4 +80,25 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
               Enviar
             </Box>
     )
+    }else{
+
+        return(
+        <Box
+            bg="#222"
+            color="#fff"
+            fontSize="20px"
+            p=".3em 2em"
+            borderRadius="16px"
+            mx="auto"
+            mt="1em"
+            transition=".5s"
+            _hover={{
+            cursor: "pointer"
+            }}
+        >
+
+            Enviando
+        </Box>
+        )
+    }
 }

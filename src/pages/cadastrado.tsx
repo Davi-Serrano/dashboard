@@ -12,7 +12,7 @@ export default function Cadastrado() {
       minH="100vh"
       minW="100vw"
     >
-     <Text p="1em" as="h2">OBRIGADO! Seu castrado foi realizando com sucesso</Text>
+     <Text p="1em" as="h2">OBRIGADO! Seu cadastro foi realizado com sucesso</Text>
 
   </Flex>
   )

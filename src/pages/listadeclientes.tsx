@@ -1,34 +1,20 @@
 import { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 
-import {  Flex, Text, Table, Tbody, useMediaQuery, Box, Link } from '@chakra-ui/react'
+import {  Flex, Text, Table, Tbody, useMediaQuery, Box } from '@chakra-ui/react'
 
 import { fauna } from "../services/fauna";
 import { query as q} from "faunadb"
 
-import { Chart } from "react-google-charts"
 
 import {Header} from "../components/Header"
 import { SideBar } from "../components/Sidebar";
 import { TableRow } from "../components/TableRow";
 
 
- const data = [
-  ["", "", ""],
-  ["2014",  400, 200],
-  ["2015",  460, 250],
-  ["2016",  1120, 300],
-  ["2017",  540, 350],
-];
-
- const options = {
-  chart: {
-  },
-};
 
 
-
-export default function User(users: any){
+export default function ClientesCadastrados(users: any){
   const [ isLargerThan900 ] = useMediaQuery('(min-width: 900px)');
   
   const [a, setA] = useState([
@@ -60,39 +46,14 @@ export default function User(users: any){
         <Flex 
           flexDir="column"
           w="85%"
+          minH="100vh"
           justify="flex-start"
           align="center"
           color="black"
         >
            <Text my="1em" as="h2" fontSize="md">Usuários registrados hoje: 12</Text>
 
-            <Flex w="100%" my="1em" justify="space-around">
-
-                <Flex display={ isLargerThan900 ? "flex" : "none"} flexDir="column"  w="45%">
-                  <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="250px"
-                    data={data}
-                    options={options}
-                  />
-
-                  <Text textAlign="center" fontWeight="bold"> Cadastros na Semana</Text>
-                </Flex>
-
-                <Flex flexDir="column"  w={isLargerThan900 ? "45%": "100%"} >
-                  <Chart
-                    chartType="Bar"
-                    width="100%"
-                    height="250px"
-                    data={data}
-                    options={options}
-                  />
-
-                  <Text  textAlign="center" fontWeight="bold"> Cadastros no Total</Text>
-                </Flex>
-
-        </Flex>
+          
 
           { isLargerThan900 ? 
           <Box mt="0">
@@ -120,17 +81,6 @@ export default function User(users: any){
               </Tbody>
             </Table>  
             
-                <Text 
-                  textAlign="center" 
-                  fontWeight="bold" 
-                  color="#000"
-                  _hover={{
-                    cursor: "pointer",
-                    opacity: ".8"
-                  }}
-                >
-                  <Link href="/listadeclientes" >  Ver lista Completa &gt;&gt; </Link>
-                </Text>
 
           </Box>
             :
@@ -145,7 +95,7 @@ export default function User(users: any){
                     opacity: ".8"
                   }}
                 >
-                  Ver lista Completa  	&gt;&gt;
+                  Versão Mobile em produção por favor acesse pelo seu desktop
                 </Text>
              
             </Flex>
@@ -173,7 +123,7 @@ export const getServerSideProps:GetServerSideProps = async ()=>{
     )
     
 
-    for(let i = 0; i < 3; i++){
+    for(let i = 0; i < users.data.length ; i++){
       myUser.push(users.data[i].data)
     }
 

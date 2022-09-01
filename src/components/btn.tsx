@@ -73,7 +73,7 @@ export function BtnSendDataClient({name, email, tel, topic, option}: ClientProps
               onClick={()=>handleClick(client)}
             >
 
-              Enivar
+              Enviar
             </Box>
     )
 }

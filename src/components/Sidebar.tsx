@@ -1,10 +1,15 @@
 import { Flex, Text, Icon } from "@chakra-ui/react"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { GiHamburgerMenu } from "react-icons/gi"
+
+
 
 export function SideBar(){
 
     const [ isClose, setIsClose ] = useState("close")
+
+    const router  = useRouter()
 
 
     return(
@@ -18,6 +23,10 @@ export function SideBar(){
                 color="white"
                 p="1em"
                 boxSize={8}
+                _hover={{
+                    cursor: "pointer",
+                    opacity: ".8"
+                }}
             />
             <Flex
             flexDir="column"
@@ -31,6 +40,8 @@ export function SideBar(){
                     cursor: "pointer",
                     opacity: ".8"
                 }}
+                onClick={()=> router.push("/listadeclientes") }
+
                 > - Clientes Registrados</Text>
 
             </Flex>

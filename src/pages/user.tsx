@@ -145,7 +145,7 @@ export default function User(users: any){
                     opacity: ".8"
                   }}
                 >
-                  Ver lista Completa  	&gt;&gt;
+                  <Link href="/listadeclientes" >  Ver lista Completa &gt;&gt; </Link>
                 </Text>
              
             </Flex>

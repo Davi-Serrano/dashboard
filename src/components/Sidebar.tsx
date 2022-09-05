@@ -17,6 +17,7 @@ export function SideBar(){
             flexDir="column"
             align="start"
             bg="#060606"
+            minH="100vh"
         >
             <Icon as={GiHamburgerMenu}
                 onClick={()=> isClose === "close" ? setIsClose("open") : setIsClose("close")}

@@ -7,15 +7,20 @@ import { fauna } from "../services/fauna";
 import { query as q} from "faunadb"
 
 import { Chart } from "react-google-charts"
+import { format } from "date-fns"
+
 
 import {Header} from "../components/Header"
 import { SideBar } from "../components/Sidebar";
 import { TableRow } from "../components/TableRow";
 
 
+const today = format(new Date(), "dd/MM/yyyy")
+
+
  const data = [
   ["", "", ""],
-  ["2014",  400, 200],
+  [today,  400, 200],
   ["2015",  460, 250],
   ["2016",  1120, 300],
   ["2017",  540, 350],
